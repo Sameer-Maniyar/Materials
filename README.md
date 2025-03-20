@@ -24,3 +24,32 @@ SmartTextField field=SmartTextField.builder()
                 })
                 .build();
 ```
+
+1) allow typing specific text
+
+```
+ topMarginTextField = SmartTextField.builder()
+                .promptText("Top Margin")
+                .allowTypingTo(e -> String.valueOf(e).matches("\\d{0,10}"))
+                .build();
+```
+
+1) Increament decrement field
+
+```
+ topMarginTextField = SmartTextField.builder()
+                .promptText("Top Margin")
+                .allowTypingTo(e -> String.valueOf(e).matches("\\d{0,10}"))
+                .build();
+
+        SmartTextFieldInDec smartTextField = SmartTextFieldInDec.builder(topMarginTextField)
+                .addConsumer((Integer e) -> {
+
+                    //Consume
+                })
+                .supplier(() -> {
+                    return //supply
+
+                })
+                .build();
+`````
