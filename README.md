@@ -1,4 +1,6 @@
-![alt text]([https://url_to_image.com](https://github.com/Sameer-Maniyar/Materials/blob/master/src/main/resources/example/smartTxt.png))
+1) add custom validaton
+2) add prompt text when text typed still visible
+3) decorate text field for form validation
 
 ```
 SmartTextField field=SmartTextField.builder()
