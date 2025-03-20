@@ -2,7 +2,7 @@
 
 1) Smart Text Field -> build on top of exixting text field to add validation and propmt effectively
 
-   ex:   SmartTextField priceTxtField = SmartTextField.builder()
+     SmartTextField priceTxtField = SmartTextField.builder()
                 .promptText("Price")
                 .validateText((inputText) -> {
 
