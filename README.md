@@ -2,7 +2,7 @@
 
 1) Smart Text Field -> build on top of exixting text field to add validation and propmt effectively
 
-     SmartTextField priceTxtField = SmartTextField.builder()
+    ``` SmartTextField priceTxtField = SmartTextField.builder()
                 .promptText("Price")
                 .validateText((inputText) -> {
 
@@ -13,7 +13,7 @@
                     }
 
                 })
-                .build();
+                .build();```
 
 
 
