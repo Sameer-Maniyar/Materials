@@ -52,11 +52,12 @@ SmartTextField field=SmartTextField.builder()
 
                 })
                 .build();
-`````
+```
 
 4) text field family validation
 
-   ```
+
+    ```
    firstNameTxtField.validateText((inputText) -> {
 
             if (!firstNameTxtField.getText().matches("[a-zA-Z0-9 ]*")) {
@@ -78,6 +79,7 @@ textFieldFamilyValidation.addSmartTextField(firstNameTxtField) // add multiple t
 
 }
 
-   ```
+
+ ```
 
 
