@@ -24,6 +24,7 @@ public class SmartTextField extends StackPane {
     private Label promptText;
     private ChangeListener<Boolean> changeListener;
     private Boolean isRequired = false;
+    private String groupName;// this specify to which form this text field belongs
 
 
 //    HBox hbox;
@@ -36,11 +37,6 @@ public class SmartTextField extends StackPane {
         promptText.setVisible(false);
         promptText.setStyle("-fx-text-fill: #888; -fx-background-color:white;");
         promptText.prefWidthProperty().bind(this.widthProperty());
-
-
-
-
-
 
 
         this.getChildren().addAll(textField, promptText);
@@ -158,9 +154,27 @@ public class SmartTextField extends StackPane {
         promptText.setVisible(false);
     }
 
-    public void required(Boolean isRequired) {
+    /**
+     * @apiNote need to specify for which group this validation required
+     * need to call getFormValidator() on text field u can group validations
+     * ex: textField1-->group A
+     *     textField1-->group A
+     *
+     *     getFormValidator().validateForRequiredFiled() validates all filds in that group
+     *
+     */
+    public void required(Boolean isRequired, String groupName) {
 
+        SingletonObject.getTextFieldFamilyValidator(groupName).addSmartTextField(this);
         this.isRequired = isRequired;
+        this.groupName = groupName;
+    }
+
+
+    public TextFieldFamilyValidation getFormValidator() {
+
+        return SingletonObject.getTextFieldFamilyValidator(this.groupName);
+
     }
 
 
@@ -193,6 +207,7 @@ public class SmartTextField extends StackPane {
 
         }
     }
+
 
     public void style(String style) {
         textField.setStyle(style);
@@ -238,6 +253,26 @@ public class SmartTextField extends StackPane {
 
         }
 
+        /**
+         * @implNote  need to specify for which group this validation required
+         * need to call getFormValidator() on text field u can group validations
+         * ex: textField1-->group A
+         *     textField1-->group A
+         *
+         *     getFormValidator().validateForRequiredFiled() validates all filds in that group
+         *
+         */
+
+        public SmartTextFiledBuilder isRequired(Boolean isRequired, String formName) {
+
+            smartTextField.required(isRequired, formName);
+
+            return this;
+
+
+        }
+
+
         public SmartTextFiledBuilder allowTypingTo(Predicate predicate) {
 
             smartTextField.getTextField().textProperty().addListener((obj, oldValue, newValue) -> {
@@ -252,8 +287,6 @@ public class SmartTextField extends StackPane {
 
             return this;
         }
-
-
 
 
     }

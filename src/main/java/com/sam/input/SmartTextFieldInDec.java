@@ -26,6 +26,8 @@ public class SmartTextFieldInDec extends HBox {
     private Consumer<Integer> consumer;
     private Supplier<Integer> supplier;
 
+    private  TextFieldFamilyValidation textFieldFamilyValidation;
+
 //    HBox hbox;
 
 
